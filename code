@@ -1,0 +1,20 @@
+ll bit[1000006];
+ll n;
+void update(ll idx, ll v)
+{
+    while(idx <= n)
+    {
+        bit[idx] += v;
+        idx += (idx & -idx);
+    }
+}
+ll prefsum(ll idx)
+{
+    ll sum = 0;
+    while(idx > 0)
+    {
+        sum += bit[idx];
+        idx -= (idx & -idx);
+    }
+    return sum;
+}
